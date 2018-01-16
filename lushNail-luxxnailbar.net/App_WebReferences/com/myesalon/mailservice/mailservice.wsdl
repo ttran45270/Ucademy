@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fSendSMTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sFromName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sSubject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sContent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fSendSMTPResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="fSendMailGun">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sSubject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sContent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sDomain" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fSendMailGunResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="fSendSMTPSoapIn">
+    <wsdl:part name="parameters" element="tns:fSendSMTP" />
+  </wsdl:message>
+  <wsdl:message name="fSendSMTPSoapOut">
+    <wsdl:part name="parameters" element="tns:fSendSMTPResponse" />
+  </wsdl:message>
+  <wsdl:message name="fSendMailGunSoapIn">
+    <wsdl:part name="parameters" element="tns:fSendMailGun" />
+  </wsdl:message>
+  <wsdl:message name="fSendMailGunSoapOut">
+    <wsdl:part name="parameters" element="tns:fSendMailGunResponse" />
+  </wsdl:message>
+  <wsdl:portType name="mailserviceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fSendSMTP">
+      <wsdl:input message="tns:fSendSMTPSoapIn" />
+      <wsdl:output message="tns:fSendSMTPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fSendMailGun">
+      <wsdl:input message="tns:fSendMailGunSoapIn" />
+      <wsdl:output message="tns:fSendMailGunSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="mailserviceSoap" type="tns:mailserviceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fSendSMTP">
+      <soap:operation soapAction="http://tempuri.org/fSendSMTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fSendMailGun">
+      <soap:operation soapAction="http://tempuri.org/fSendMailGun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="mailserviceSoap12" type="tns:mailserviceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fSendSMTP">
+      <soap12:operation soapAction="http://tempuri.org/fSendSMTP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fSendMailGun">
+      <soap12:operation soapAction="http://tempuri.org/fSendMailGun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="mailservice">
+    <wsdl:port name="mailserviceSoap" binding="tns:mailserviceSoap">
+      <soap:address location="http://mailservice.myesalon.com/mailservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="mailserviceSoap12" binding="tns:mailserviceSoap12">
+      <soap12:address location="http://mailservice.myesalon.com/mailservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
